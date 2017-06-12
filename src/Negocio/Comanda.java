@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistencia.Conexao;
+import Persistencia.DAO;
 
 
 public class Comanda implements DAO{
@@ -129,7 +130,7 @@ public class Comanda implements DAO{
 	}
 
 
-	public ArrayList listar() throws SQLException {
+	public ArrayList<Comanda> listar() throws SQLException {
 		Connection conexao = new Conexao().getConexao();
 		ResultSet resultSet = conexao.prepareStatement("SELECT * FROM Comanda "+";").executeQuery();
 		ArrayList<Comanda> comandas = new ArrayList<Comanda>();
@@ -142,18 +143,20 @@ public class Comanda implements DAO{
 			
 			id = resultSet.getInt("cpfCliente");
 			ResultSet resultSet1 = conexao.prepareStatement("SELECT * FROM Cliente where cpf = "+id+";").executeQuery();
+			resultSet1.next();
 			novoCliente.setCpf(resultSet1.getInt("cpf"));
 			novoCliente.setNome(resultSet1.getString("nome"));
 			novo.setCliente(novoCliente);
 			
 			id = resultSet.getInt("cpfGarcom");
 			ResultSet resultSet2 = conexao.prepareStatement("SELECT * FROM Garcom where cpf = "+id+";").executeQuery();
+			resultSet2.next();
 			novoGarcom.setCpf(resultSet2.getInt("cpf"));
 			novoGarcom.setNome(resultSet2.getString("nome"));
 			novo.setGarcom(novoGarcom);
 			
 			id = resultSet.getInt("numero");
-			ResultSet resultSet3 = conexao.prepareStatement("SELECT * FROM Bebida where id = "+id+";").executeQuery();
+			ResultSet resultSet3 = conexao.prepareStatement("SELECT * FROM Bebida where idComanda = "+id+";").executeQuery();
 			ArrayList<Bebida> bebs = new ArrayList<Bebida>();
 			
 			while(resultSet3.next()){
@@ -167,7 +170,7 @@ public class Comanda implements DAO{
 			}
 			novo.setVetBebida(bebs);
 			
-			ResultSet resultSet4 = conexao.prepareStatement("SELECT * FROM Prato where id = "+id+";").executeQuery();
+			ResultSet resultSet4 = conexao.prepareStatement("SELECT * FROM Prato where idComanda = "+id+";").executeQuery();
 			ArrayList<Prato> pratos = new ArrayList<Prato>();
 			
 			while(resultSet4.next()){
@@ -176,6 +179,7 @@ public class Comanda implements DAO{
 				novoPrato.setNome(resultSet4.getString("nome"));
 				novoPrato.setValor(resultSet4.getInt("valor"));
 				pratos.add(novoPrato);
+				
 			}
 			novo.setVetPrato(pratos);
 			

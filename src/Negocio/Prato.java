@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistencia.Conexao;
+import Persistencia.DAO;
 
 public class Prato implements DAO {
 
@@ -58,7 +59,7 @@ public class Prato implements DAO {
 		conexao.close();
 		return true;
 	}
-	public ArrayList listar() throws SQLException {
+	public ArrayList<Prato> listar() throws SQLException {
 		Connection conexao = new Conexao().getConexao();
 		ResultSet resultSet = conexao.prepareStatement("SELECT * FROM Prato "+";").executeQuery();
 		ArrayList<Prato> pratos = new ArrayList<Prato>();

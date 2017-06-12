@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Persistencia.Conexao;
+import Persistencia.DAO;
 
 public class Garcom implements DAO{
 	private int cpf;
@@ -47,7 +48,7 @@ public class Garcom implements DAO{
 		conexao.close();
 		return true;
 	}
-	public ArrayList listar() throws SQLException {
+	public ArrayList<Garcom> listar() throws SQLException {
 		Connection conexao = new Conexao().getConexao();
 		ResultSet resultSet = conexao.prepareStatement("SELECT * FROM Garcom "+";").executeQuery();
 		ArrayList<Garcom> garcom = new ArrayList<Garcom>();
