@@ -18,7 +18,7 @@ public class Conexao {
 		this.banco = "Restaurante";
 		this.host = "127.0.0.1";
 		this.usuario = "root";
-		this.senha = "Ahcl@1211";
+		this.senha = "";
 	}
 	public Connection getConexao(){
 		String url = "jdbc:mysql://"+ this.host + "/" + this.banco;
