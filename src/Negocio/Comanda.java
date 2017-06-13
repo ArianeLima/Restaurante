@@ -163,7 +163,7 @@ public class Comanda implements DAO{
 				Bebida novoBebida = new Bebida();
 				novoBebida.setId(resultSet3.getInt("id"));
 				novoBebida.setMarca(resultSet3.getString("marca"));
-				novoBebida.setPreco(resultSet3.getInt("preco"));
+				novoBebida.setPreco(resultSet3.getDouble("preco"));
 				novoBebida.setTipo(resultSet3.getString("tipo"));
 				novoBebida.setVolume(resultSet3.getInt("volume"));
 				bebs.add(novoBebida);
@@ -177,7 +177,7 @@ public class Comanda implements DAO{
 				Prato novoPrato = new Prato();
 				novoPrato.setId(resultSet4.getInt("id"));
 				novoPrato.setNome(resultSet4.getString("nome"));
-				novoPrato.setValor(resultSet4.getInt("valor"));
+				novoPrato.setValor(resultSet4.getDouble("valor"));
 				pratos.add(novoPrato);
 				
 			}
@@ -198,7 +198,7 @@ public class Comanda implements DAO{
 		int i;
 		for( i = 0 ; i < this.getVetBebida().size(); i++){
 			PreparedStatement atualizar1 = conexao.prepareStatement("UPDATE Bebida SET marca =?, "
-							+ "volume=?, preco=?, tipo=?, id=? where numero=?;");
+							+ "volume=?, preco=?, tipo=?, id=? where idComanda=?;");
 			atualizar1.setString(1, this.getVetBebida().get(i).getMarca());
 			atualizar1.setInt(2, this.getVetBebida().get(i).getVolume());
 			atualizar1.setDouble(3, this.getVetBebida().get(i).getPreco());
@@ -209,7 +209,7 @@ public class Comanda implements DAO{
 		}
 		for( i = 0 ; i < this.getVetPrato().size(); i++){
 			PreparedStatement atualizar2 = conexao.prepareStatement("UPDATE Prato SET nome =?, "
-							+ "valor=?, id=? where numero=?;");
+							+ "valor=?, id=? where idComanda=?;");
 			atualizar2.setString(1, this.getVetPrato().get(i).getNome());
 			atualizar2.setDouble(2, this.getVetPrato().get(i).getValor());
 			atualizar2.setInt(3, this.getVetPrato().get(i).getId());

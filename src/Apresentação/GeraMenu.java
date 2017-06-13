@@ -171,19 +171,91 @@ public class GeraMenu {
 				c.deletar(dados.nextInt());
 			}
 			else if(opcao == 11){
-				
+				Scanner dados = new Scanner(System.in);
+				System.out.println("Digite os dados da Bebida para ser atualizada");
+				Bebida b = new Bebida();
+				System.out.println("Digite o ID: ");
+				b.setId(dados.nextInt());
+				System.out.println("Digite o Marca: ");
+				b.setMarca(dados.next());
+				System.out.println("Digite o Tipo: ");
+				b.setTipo(dados.next());
+				System.out.println("Digite o Preco: ");
+				b.setPreco(dados.nextDouble());
+				System.out.println("Digite o Volume: " +b.getPreco());
+				b.setVolume(dados.nextInt());
+				b.atualizar();
 			}
 			else if(opcao == 12){
-				
+				dados = new Scanner(System.in);
+				System.out.println("Digite os dados do Prato");
+				Prato p = new Prato();
+				System.out.println("Digite o ID: ");
+				p.setId(dados.nextInt());
+				System.out.println("Digite o Nome: ");
+				p.setNome(dados.next());
+				System.out.println("Digite o Preco: ");
+				p.setValor(dados.nextDouble());
+				p.atualizar();
 			}
 			else if(opcao == 13){
-				
+				dados = new Scanner(System.in);
+				System.out.println("Digite os dados do Cliente");
+				Cliente c = new Cliente();
+				System.out.println("Digite o CPF: ");
+				c.setCpf(dados.nextInt());
+				System.out.println("Digite o Nome: ");
+				c.setNome(dados.next());
+				c.atualizar();
 			}
 			else if(opcao == 14){
-				
+				dados = new Scanner(System.in);
+				System.out.println("Digite os dados do Garcom");
+				Garcom g = new Garcom();
+				System.out.println("Digite o CPF: ");
+				g.setCpf(dados.nextInt());
+				System.out.println("Digite o Nome: ");
+				g.setNome(dados.next());
+				g.atualizar();
 			}
 			else if(opcao == 15){
-				
+				dados = new Scanner(System.in);
+				System.out.println("Digite os dados da Comanda que vai ser atualizada");
+				Comanda c = new Comanda();
+				System.out.println("Digite o numero da Comanda");
+				c.setNumero(dados.nextInt());
+				System.out.println("Digite os dados do Cliente da Comanda");
+				System.out.println("Digite o CPF: ");
+				c.getCliente().setCpf(dados.nextInt());
+				System.out.println("Digite o Nome: ");
+				c.getCliente().setNome(dados.next());
+				c.getCliente().inserir();
+				System.out.println("Digite os dados do Garcom da Comanda");
+				System.out.println("Digite o CPF: ");
+				c.getGarcom().setCpf(dados.nextInt());
+				System.out.println("Digite o Nome: ");
+				c.getGarcom().setNome(dados.next());
+				c.getGarcom().inserir();
+				int quant;
+				System.out.println("Digite a quantidade de bebidas da Comanda");
+				quant = dados.nextInt();
+				for (int i = 0; i < quant; i++) {
+					System.out.println("Digite os dados da Bebida");
+					Bebida b = new Bebida();
+					System.out.println("Digite o ID: ");
+					b.setId(dados.nextInt());
+					System.out.println("Digite o Marca: ");
+					b.setMarca(dados.next());
+					System.out.println("Digite o Tipo: ");
+					b.setTipo(dados.next());
+					System.out.println("Digite o Preco: ");
+					b.setPreco(dados.nextDouble());
+					
+					System.out.println("Digite o Volume: ");
+					b.setVolume(dados.nextInt());
+					c.getVetBebida().add(b);
+				}
+				c.atualizar();
 			}
 			else if(opcao == 16){
 				Bebida b = new Bebida();

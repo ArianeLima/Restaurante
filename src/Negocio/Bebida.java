@@ -82,7 +82,7 @@ public class Bebida implements DAO {
 			Bebida novo = new Bebida();
 			novo.setId(resultSet.getInt("id"));
 			novo.setMarca(resultSet.getString("marca"));
-			novo.setPreco(resultSet.getInt("preco"));
+			novo.setPreco(resultSet.getDouble("preco"));
 			novo.setTipo(resultSet.getString("tipo"));
 			novo.setVolume(resultSet.getInt("volume"));
 			bebs.add(novo);

@@ -68,7 +68,7 @@ public class Prato implements DAO {
 			Prato novo = new Prato();
 			novo.setId(resultSet.getInt("id"));
 			novo.setNome(resultSet.getString("nome"));
-			novo.setValor(resultSet.getInt("valor"));
+			novo.setValor(resultSet.getDouble("valor"));
 			pratos.add(novo);
 		}
 		conexao.close();

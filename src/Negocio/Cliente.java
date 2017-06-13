@@ -66,7 +66,7 @@ public class Cliente implements DAO{
 	public boolean atualizar() throws SQLException {
 		Connection conexao = new Conexao().getConexao();
 
-		PreparedStatement atualizar = conexao.prepareStatement("UPDATE Cliente SET nome =?, "
+		PreparedStatement atualizar = conexao.prepareStatement("UPDATE Cliente SET nome =? "
 						+ " where cpf=?;");
 		atualizar.setString(1, this.getNome());
 		atualizar.setInt(2,this.getCpf() );
